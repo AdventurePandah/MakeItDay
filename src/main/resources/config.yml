@@ -1,0 +1,19 @@
+# MakeItDay by AdventurePandah
+# In this configuration file are you able to modify multiple things from this plugin.
+# Don't forget to rate this plugin and share it with your friends :)
+# Let's start
+
+#-------------| Messages |--------------
+
+# Broadcast message if player made it day. If you would like to use players name, please use this: %player%
+broadcastMsg: "&a%player% made it day!"
+
+#---------------| Times |---------------
+
+# Time in seconds for how long a player needs to sleep
+playerSleepTime: 7
+
+#---------------| Other |---------------
+
+# Enable / Disable broadcast messages (true/false)
+broadcast: true

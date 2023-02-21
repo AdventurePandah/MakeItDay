@@ -4,3 +4,21 @@ main: me.adventurepandah.makeitday.Main
 api-version: 1.19
 authors: [ AdventurePandah ]
 description: Make it day if one player sleeps
+commands:
+  makeitday:
+    description: Shows help menu with available commands.
+    aliases:
+      - mid
+  makeitday help:
+    description: Shows help menu with available commands.
+  makeitday reload:
+    description: Reloads the config of the plugin.
+permissions:
+  makeitday.day:
+    description: Allows you to make it day
+  makeitday.reload:
+    description: Allows you to reload the config
+    default: op
+  makeitday.help:
+    description: Allows you to see the help menu
+    default: op
