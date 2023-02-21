@@ -1,0 +1,6 @@
+name: MakeItDay
+version: '${project.version}'
+main: me.adventurepandah.makeitday.Main
+api-version: 1.19
+authors: [ AdventurePandah ]
+description: Make it day if one player sleeps
