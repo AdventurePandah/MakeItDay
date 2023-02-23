@@ -1,6 +1,7 @@
 package me.adventurepandah.makeitday.managers;
 
 import me.adventurepandah.makeitday.Main;
+import me.adventurepandah.makeitday.SubCommand;
 import me.adventurepandah.makeitday.commands.HelpCommand;
 import me.adventurepandah.makeitday.commands.ReloadCommand;
 import org.bukkit.ChatColor;
