@@ -1,6 +1,7 @@
 package me.adventurepandah.makeitday;
 
 import me.adventurepandah.makeitday.listeners.BedEnterListener;
+import me.adventurepandah.makeitday.listeners.BedLeaveListener;
 import me.adventurepandah.makeitday.managers.CommandManager;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginManager;
@@ -39,6 +40,7 @@ public final class Main extends JavaPlugin {
         commandManager.setup();
 
         pm.registerEvents(new BedEnterListener(), this);
+        pm.registerEvents(new BedLeaveListener(), this);
 
     }
 
