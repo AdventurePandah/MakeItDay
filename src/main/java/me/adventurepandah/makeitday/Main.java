@@ -3,7 +3,10 @@ package me.adventurepandah.makeitday;
 import me.adventurepandah.makeitday.listeners.BedEnterListener;
 import me.adventurepandah.makeitday.listeners.BedLeaveListener;
 import me.adventurepandah.makeitday.managers.CommandManager;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameRule;
+import org.bukkit.World;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -12,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
 public final class Main extends JavaPlugin {
 
@@ -42,6 +46,15 @@ public final class Main extends JavaPlugin {
         pm.registerEvents(new BedEnterListener(), this);
         pm.registerEvents(new BedLeaveListener(), this);
 
+        // Making sure that Minecraft won't override plugin settings
+        String[] split = Bukkit.getBukkitVersion().split("-")[0].split("\\.");
+        String minorVer = split[1];
+
+        if (Integer.parseInt(minorVer) >= 17) {
+            for(World world : Bukkit.getWorlds()) {
+                world.setGameRule(GameRule.PLAYERS_SLEEPING_PERCENTAGE, 101);
+            }
+        }
     }
 
     public void loadConfig() {
