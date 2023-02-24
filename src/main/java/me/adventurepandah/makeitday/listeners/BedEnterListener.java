@@ -18,10 +18,20 @@ public class BedEnterListener implements Listener {
     public void onPlayerBedEnter(PlayerBedEnterEvent e) {
         Bukkit.getServer().getScheduler().runTaskLater(plugin, () -> {
             if(e.getPlayer().isSleeping() && e.getPlayer().getWorld().getTime() >= 13000L && e.getPlayer().hasPermission("makeitday.day")){
+                int amountOnlinePlayers = Bukkit.getOnlinePlayers().size();
+
                 sleepingPlayerAmount++;
                 if (!plugin.getConfig().getBoolean("usePercentage")) {
                     if (sleepingPlayerAmount >= plugin.getConfig().getInt("amountOfSleepingPlayers")) {
                         makeItDay(e.getPlayer().getWorld(), e.getPlayer());
+                    } else if(amountOnlinePlayers < plugin.getConfig().getInt("amountOfSleepingPlayers")) {
+                        if(sleepingPlayerAmount == amountOnlinePlayers) {
+                            makeItDay(e.getPlayer().getWorld(), e.getPlayer());
+                        } else {
+                            for (Player onlinePlayers : Bukkit.getOnlinePlayers()) {
+                                onlinePlayers.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("amountPlayerSleepMsg")).replace("%amountPlayers%", String.valueOf(sleepingPlayerAmount)).replace("%neededPlayers%", String.valueOf(amountOnlinePlayers)));
+                            }
+                        }
                     } else {
                         if(plugin.getConfig().getBoolean("broadcast")){
                             for(Player onlinePlayers : Bukkit.getOnlinePlayers()) {
@@ -30,7 +40,6 @@ public class BedEnterListener implements Listener {
                         }
                     }
                 } else {
-                    int amountOnlinePlayers = Bukkit.getOnlinePlayers().size();
                     int percentageOfSleepingPlayers = sleepingPlayerAmount*100/amountOnlinePlayers;
 
                     if(percentageOfSleepingPlayers >= plugin.getConfig().getInt("percentageOfSleepingPlayers")) {
