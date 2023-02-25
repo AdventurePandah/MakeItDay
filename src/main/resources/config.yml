@@ -31,8 +31,8 @@ broadcast: true
 # Amount of players that needs to be asleep before it becomes day
 # Choose here if you want to use an amount of players or percentage of players.
 # Using percentage will mean that 50% (if you use 50 at percentageOfSleepingPlayers) of the online players needs to be asleep to make it day.
-usePercentage: false
+usePercentage: true
 percentageOfSleepingPlayers: 50
 
 # Below won't affect anything when usePercentage is set to true. Default is 2 players. This means that 2 players need to be asleep to make it day.
-amountOfSleepingPlayers: 2
+amountOfSleepingPlayers: 1
