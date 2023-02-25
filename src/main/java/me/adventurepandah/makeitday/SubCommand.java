@@ -1,4 +1,4 @@
-package me.adventurepandah.makeitday.managers;
+package me.adventurepandah.makeitday;
 
 import org.bukkit.command.CommandSender;
 

@@ -8,6 +8,16 @@
 # Broadcast message if player made it day. If you would like to use players name, please use this: %player%
 broadcastMsg: "&a%player% made it day!"
 
+# Message to let know how many players are asleep (Only if broadcast is true)
+# %amountPlayers% = Amount of currently sleeping players
+# %neededPlayers% = Amount of players that need to sleep to make it day
+amountPlayerSleepMsg: "&aCurrently %amountPlayers% of %neededPlayers% players sleeping to make it day."
+
+# Message to let know what percentage of players are asleep (Only if broadcast is true)
+# %currentPercentage% = Current percentage of sleeping players
+# %neededPercentage% = Needed percentage of sleeping players to make it day
+amountPlayerSleepPercentageMsg: "&aCurrently %currentPercentage%% of %neededPercentage%% sleeping to make it day."
+
 #---------------| Times |---------------
 
 # Time in seconds for how long a player needs to sleep
@@ -17,3 +27,12 @@ playerSleepTime: 7
 
 # Enable / Disable broadcast messages (true/false)
 broadcast: true
+
+# Amount of players that needs to be asleep before it becomes day
+# Choose here if you want to use an amount of players or percentage of players.
+# Using percentage will mean that 50% (if you use 50 at percentageOfSleepingPlayers) of the online players needs to be asleep to make it day.
+usePercentage: true
+percentageOfSleepingPlayers: 50
+
+# Below won't affect anything when usePercentage is set to true. Default is 2 players. This means that 2 players need to be asleep to make it day.
+amountOfSleepingPlayers: 1
