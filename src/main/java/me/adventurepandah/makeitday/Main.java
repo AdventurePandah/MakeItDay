@@ -55,6 +55,10 @@ public final class Main extends JavaPlugin {
                 world.setGameRule(GameRule.PLAYERS_SLEEPING_PERCENTAGE, 101);
             }
         }
+
+        // Load bStats metrics
+        int pluginId = 18176;
+        Metrics metrics = new Metrics(this, pluginId);
     }
 
     public void loadConfig() {
