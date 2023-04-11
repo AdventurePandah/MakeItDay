@@ -1,6 +1,8 @@
 package me.adventurepandah.makeitday.listeners;
 
 import me.adventurepandah.makeitday.Main;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -9,6 +11,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerBedEnterEvent;
 
+import java.io.IOException;
+
 public class BedEnterListener implements Listener {
     private final Main plugin = Main.getInstance();
 
@@ -16,6 +20,14 @@ public class BedEnterListener implements Listener {
 
     @EventHandler
     public void onPlayerBedEnter(PlayerBedEnterEvent e) {
+        if (Integer.parseInt(plugin.minorVer) >= 11) {
+            Bukkit.getServer().getScheduler().runTask(plugin, () -> {
+                if(e.getPlayer().isSleeping()) {
+                    e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(""));
+                }
+            });
+        }
+
         Bukkit.getServer().getScheduler().runTaskLater(plugin, () -> {
             if(e.getPlayer().isSleeping() && e.getPlayer().getWorld().getTime() >= 13000L && e.getPlayer().hasPermission("makeitday.day")){
                 int amountOnlinePlayers = Bukkit.getOnlinePlayers().size();

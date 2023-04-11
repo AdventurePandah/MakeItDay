@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
 
 public final class Main extends JavaPlugin {
 
@@ -33,6 +32,11 @@ public final class Main extends JavaPlugin {
 
     PluginManager pm = getServer().getPluginManager();
 
+    // Making sure that Minecraft won't override plugin settings
+    private final String[] split = Bukkit.getBukkitVersion().split("-")[0].split("\\.");
+
+    public String minorVer = split[1];
+
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -45,10 +49,6 @@ public final class Main extends JavaPlugin {
 
         pm.registerEvents(new BedEnterListener(), this);
         pm.registerEvents(new BedLeaveListener(), this);
-
-        // Making sure that Minecraft won't override plugin settings
-        String[] split = Bukkit.getBukkitVersion().split("-")[0].split("\\.");
-        String minorVer = split[1];
 
         if (Integer.parseInt(minorVer) >= 17) {
             for(World world : Bukkit.getWorlds()) {
